@@ -107,6 +107,10 @@ public class EditarPanel extends JPanel {
                 }
             } else if (e.getSource() == editarButton ) {
                 controller.editarReceita( this.codigo, nomeField.getText(), ingredientesField.getText() );
+                nomeField.setText("");
+                ingredientesField.setText("");
+                pesquisarCodigo.setVisible(true);
+                editarReceita.setVisible(false);
             } else if (e.getSource() == fecharButton ) {
                 codigoField.setText("");
                 nomeField.setText("");

@@ -68,6 +68,10 @@ public class AdicionarPanel extends JPanel {
                 String ingredientes = ingredientesField.getText();
 
                 controller.addReceita( id, nome, ingredientes );
+                idField.requestFocus(true);
+                idField.setText("");
+                nomeField.setText("");
+                ingredientesField.setText("");
             } else if ( e.getSource() == limparButton ) {
                 idField.requestFocus(true);
                 idField.setText("");

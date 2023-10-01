@@ -57,6 +57,8 @@ public class RemoverPanel extends JPanel {
             if ( e.getSource() == removerButton ) {
                 if ( controller.removerReceita(codigoField.getText()) ) {
                     JOptionPane.showMessageDialog( null, "Receita Removida com sucesso!" );
+                    codigoField.setText("");
+                    codigoField.requestFocus( true );
                 } else {
                     JOptionPane.showMessageDialog( null, "Receita não encontrada." );
                 }
