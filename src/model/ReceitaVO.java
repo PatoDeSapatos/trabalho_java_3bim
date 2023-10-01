@@ -1,5 +1,8 @@
 package model;
 
+/**
+ * @author Felipe Fernandes Alves e Julia Moreira de Paula
+ */
 public class ReceitaVO {
     private int codigo;
     private String nome;

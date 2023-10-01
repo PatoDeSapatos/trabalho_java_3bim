@@ -8,12 +8,16 @@ import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
 import controller.ReceitaController;
 import view.ReceitaView;
 
+/**
+ * @author Felipe Fernandes Alves e Julia Moreira de Paula
+ */
 public class EditarPanel extends JPanel {
     private Dimension dimension = new Dimension(380, 220);
     private ReceitaController controller;
@@ -34,6 +38,7 @@ public class EditarPanel extends JPanel {
     private JButton pesquisarButton = new JButton("Pesquisar");
     private JButton editarButton = new JButton("Editar");
     private JButton fecharButton = new JButton("Fechar");
+    private JButton cancelarButton = new JButton("Cancelar");
     private JButton limparButton = new JButton("Limpar");
 
     public EditarPanel(ReceitaController controller, ReceitaView parent) {
@@ -48,7 +53,8 @@ public class EditarPanel extends JPanel {
         editarButton.addActionListener(handler);
         fecharButton.addActionListener(handler);
         limparButton.addActionListener(handler);
-
+        cancelarButton.addActionListener(handler);
+        
         this.pesquisarCodigo = new JPanel( new BorderLayout() );
             pesquisarCodigo.add(codigoLabel, BorderLayout.NORTH);
             pesquisarCodigo.add(codigoField, BorderLayout.CENTER);
@@ -64,8 +70,9 @@ public class EditarPanel extends JPanel {
                 ingredientesPanel.add(ingredientesField);
             JPanel buttonsPanel = new JPanel();
                 buttonsPanel.add(editarButton);
-                buttonsPanel.add(fecharButton);
+                buttonsPanel.add(cancelarButton);
                 buttonsPanel.add(limparButton);
+                buttonsPanel.add(fecharButton);
             editarReceita.add(nomePanel, BorderLayout.NORTH);
             editarReceita.add(ingredientesPanel, BorderLayout.CENTER);
             editarReceita.add(buttonsPanel, BorderLayout.SOUTH);
@@ -95,6 +102,7 @@ public class EditarPanel extends JPanel {
                     ingredientesField.setText(receita[1]);
                     editarReceita.setVisible(true);
                 } else {
+                    JOptionPane.showMessageDialog(null, "Não foram encontradas Receitas com este código.");
                     codigoField.setText("");
                 }
             } else if (e.getSource() == editarButton ) {
@@ -110,6 +118,12 @@ public class EditarPanel extends JPanel {
                 codigoField.setText("");
                 nomeField.setText("");
                 ingredientesField.setText("");
+            } else if (e.getSource() == cancelarButton) {
+                codigoField.setText("");
+                nomeField.setText("");
+                ingredientesField.setText("");
+                pesquisarCodigo.setVisible(true);
+                editarReceita.setVisible(false);
             }
         }
         

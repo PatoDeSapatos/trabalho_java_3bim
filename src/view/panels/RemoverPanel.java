@@ -12,6 +12,10 @@ import javax.swing.JTextField;
 import controller.ReceitaController;
 import view.ReceitaView;
 
+/**
+ * @author Felipe Fernandes Alves e Julia Moreira de Paula
+ */
+
 public class RemoverPanel extends JPanel {
     private ReceitaController controller;
     private ReceitaView parent;

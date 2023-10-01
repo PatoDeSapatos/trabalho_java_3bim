@@ -18,6 +18,10 @@ public class ReceitaView extends JFrame {
     private EditarPanel editarPanel = new EditarPanel(controller, this);
     private ListarPanel listarPanel = new ListarPanel(controller, this);
 
+
+    /**
+     * Enum com todos os painéis do projeto
+     */
     public enum Panels {
         ADICIONAR(0),
         REMOVER(1),       
@@ -59,6 +63,10 @@ public class ReceitaView extends JFrame {
         setVisible( true );
     }
 
+    /**
+     * Substitui o painel atual por um novo
+     * @param newPanel Novo painel a ser aberto
+     */
     public void changePanel( Panels newPanel ) {
         if ( this.panel != null ) {
             remove( this.panel );

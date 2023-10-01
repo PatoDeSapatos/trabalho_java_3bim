@@ -2,9 +2,15 @@ package model;
 
 import java.util.ArrayList;
 
+/**
+ * @author Felipe Fernandes Alves e Julia Moreira de Paula
+ */
 public class ReceitaModel {
     private ArrayList<ReceitaVO> receitas = new ArrayList<>();
 
+    /**
+     * Inicia a classe com cinco Receitas.
+     */
     public ReceitaModel() {
         receitas.add( new ReceitaVO(1, "Bolo", "Ovo, chocolate e leite", "xx-xx") );
         receitas.add( new ReceitaVO(2, "Torta", "Ovo, leite e limão", "xx-xx") );
@@ -13,11 +19,23 @@ public class ReceitaModel {
         receitas.add( new ReceitaVO(5, "Suco Tang", "Suco, Tang e água", "xx-xx") );
     }
 
+    /**
+     * Cria um objeto Receita e adiciona ao banco de dados
+     * @param id
+     * @param nome 
+     * @param ingredientes
+     * @param data
+     */
     public void addReceita(int id, String nome, String ingredientes, String data) {
         ReceitaVO receita = new ReceitaVO( id, nome, ingredientes, data );
         this.receitas.add( receita );
     }
 
+    /**
+     * Remove uma receita do banco de dados
+     * @param codigo
+     * @return true caso a remoção seja um sucesso, false caso a remoção falhe
+     */
     public boolean removerReceita( int codigo ) {
         for (int i = 0; i < this.receitas.size(); i++) {
             if ( this.receitas.get(i).getCodigo() == codigo ) {
@@ -29,6 +47,13 @@ public class ReceitaModel {
         return false;
     }
 
+    /**
+     * Edita uma receita no banco de dados, alterando o nome e os ingredientes
+     * @param id
+     * @param novoNome
+     * @param novosIngredientes
+     * @return true caso a edição seja um sucesso, false caso falhe
+     */
     public boolean editarReceita(int id, String novoNome, String novosIngredientes) {
         try {
             for (int i = 0; i < receitas.size(); i++) {
@@ -45,6 +70,11 @@ public class ReceitaModel {
         return false;
     }
 
+    /**
+     * Pesquisa uma receita no banco de dados a partir do código
+     * @param int codigo o código da receita a ser pesquisada
+     * @return um array de strings com o nome e os ingrefientes da receita encontrada
+     */
     public String[] pesquisarCodigo( int codigo ) {
         for (ReceitaVO receitaVO : receitas) {
             if ( receitaVO.getCodigo() == codigo ) {
@@ -57,6 +87,11 @@ public class ReceitaModel {
         return retorno;
     }
 
+    /**
+     * Procura uma Receita com o id fornecido dentro do banco de dados
+     * @param id O código a ser procurado
+     * @return true caso seja encontrado uma Receita com o id fornecido, false caso não encontre nada.
+     */
     public boolean idExiste( int id ) {
         for (ReceitaVO receitaVO : receitas) {
             if (receitaVO.getCodigo() == id) {
@@ -67,6 +102,10 @@ public class ReceitaModel {
         return false;
     }
 
+    /**
+     * Retorna todas as receitas guardadas no banco de dados em um array 2d
+     * @return Um array 2d com todas as receitas armazenadas. 
+     */
     public Object[][] getTodasReceitas() {
         Object[][] lista = new Object[ getSize() ][ 4 ]; 
 
@@ -88,6 +127,11 @@ public class ReceitaModel {
         return lista;
     }
     
+    /**
+     * Retorna todas as receitas que compartilham o mesmo nome.
+     * @param name O nome a ser pesquisado
+     * @return Um array 2d com todas as receitas que compartilham o mesmo nome
+     */
     public Object[][] getReceitasPorNome( String name ) {
         ArrayList<ReceitaVO> receitasPesquisadas = new ArrayList<>();
 

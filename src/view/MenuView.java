@@ -1,5 +1,9 @@
 package view;
 
+/**
+ * @author Felipe Fernandes Alves e Julia Moreira de Paula
+ */
+
 import javax.swing.JButton;
 import javax.swing.JFrame;
 

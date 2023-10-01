@@ -14,6 +14,10 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 
+/**
+ * @author Felipe Fernandes Alves e Julia Moreira de Paula
+ */
+
 public class ListarPanel extends JPanel {
     private ReceitaController controller;
     private ReceitaView parent;
@@ -64,6 +68,9 @@ public class ListarPanel extends JPanel {
         add( tablePanel, BorderLayout.CENTER );
     }
 
+    /**
+     * Atualiza a lista de receitas a serem mostradas na tela com todas as receitas guardadas no banco de dados
+     */
     public void atualizarLista() {
         String[] rowNames = { "Id", "Nome", "Ingredientes", "Data de Registro" };
         Object[][] tableContent = controller.listarReceitas();
@@ -71,6 +78,10 @@ public class ListarPanel extends JPanel {
         this.table.setModel( new DefaultTableModel(tableContent, rowNames) );
     }
 
+    /**
+     * Atualiza a lista de receitas a serem mostradas na tela com todas as receitas que compartilham um nome
+     * @param nome nome a ser pesquisado no banco de dados
+     */
     public void atualizarLista( String nome ) {
         String[] rowNames = { "Id", "Nome", "Ingredientes", "Data de Registro" };
         Object[][] tableContent = controller.pesquisarReceitas( nome );

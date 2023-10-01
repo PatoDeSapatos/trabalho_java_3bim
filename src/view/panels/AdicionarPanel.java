@@ -10,6 +10,9 @@ import view.ReceitaView;
 
 import javax.swing.*;
 
+/**
+ * @author Felipe Fernandes Alves e Julia Moreira de Paula
+ */
 public class AdicionarPanel extends JPanel {
     private ReceitaController controller;
     private ReceitaView parent;
