@@ -5,7 +5,10 @@ import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+
+
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 import controller.ReceitaController;
@@ -61,11 +64,11 @@ public class ListarPanel extends JPanel {
             buttonsPanel.add(fecharButton);
         add( buttonsPanel, BorderLayout.PAGE_START );
 
-        JPanel tablePanel = new JPanel();
-            tablePanel.setLayout( new BorderLayout() );
-            tablePanel.add(this.table.getTableHeader(), BorderLayout.NORTH);
-            tablePanel.add(this.table, BorderLayout.CENTER);
-        add( tablePanel, BorderLayout.CENTER );
+        JScrollPane scrollPane = new JScrollPane(table);
+            scrollPane.setPreferredSize( dimension );
+        add( scrollPane, BorderLayout.CENTER );
+
+        atualizarLista();
     }
 
     /**
@@ -105,8 +108,6 @@ public class ListarPanel extends JPanel {
                 pesquisarField.setText("");
             } else if ( e.getSource() == fecharButton ) {
                 pesquisarField.setText("");
-                String[] columnNames = {"Id", "Nome", "Ingredientes", "Data de Registro"};
-                table.setModel(new DefaultTableModel(columnNames, 0));
                 parent.onClose();
             } else if ( e.getSource() == pesquisarButton ) {
                 atualizarLista( pesquisarField.getText() );

@@ -1,6 +1,10 @@
 package model;
 
+import java.util.Date;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 
 /**
  * @author Felipe Fernandes Alves e Julia Moreira de Paula
@@ -12,11 +16,15 @@ public class ReceitaModel {
      * Inicia a classe com cinco Receitas.
      */
     public ReceitaModel() {
-        receitas.add( new ReceitaVO(1, "Bolo", "Ovo, chocolate e leite", "xx-xx") );
-        receitas.add( new ReceitaVO(2, "Torta", "Ovo, leite e limão", "xx-xx") );
-        receitas.add( new ReceitaVO(3, "Café com Leite", "Café, açúcar e leite", "xx-xx") );
-        receitas.add( new ReceitaVO(4, "Pão com manteiga", "Pão e manteiga", "xx-xx") );
-        receitas.add( new ReceitaVO(5, "Suco Tang", "Suco, Tang e água", "xx-xx") );
+        Date date = Calendar.getInstance().getTime();
+        DateFormat dateFormat = new SimpleDateFormat("yyyy-mm-dd");
+        String strDate = dateFormat.format(date);
+
+        receitas.add( new ReceitaVO(1, "Bolo"            , "Ovo, chocolate e leite", strDate) );
+        receitas.add( new ReceitaVO(2, "Torta"           , "Ovo, leite e limão"    , strDate) );
+        receitas.add( new ReceitaVO(3, "Café com Leite"  , "Café, açúcar e leite"  , strDate) );
+        receitas.add( new ReceitaVO(4, "Pão com manteiga", "Pão e manteiga"        , strDate) );
+        receitas.add( new ReceitaVO(5, "Suco Tang"       , "Suco, Tang e água"     , strDate) );
     }
 
     /**

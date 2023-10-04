@@ -88,6 +88,7 @@ public class ReceitaView extends JFrame {
             case LISTAR:
                 this.panel = listarPanel;
                 setSize( listarPanel.getDimension() );
+                listarPanel.atualizarLista();
                 break;
             default:
                 System.out.print("Erro: Tentando abrir jpanel inexistente");
